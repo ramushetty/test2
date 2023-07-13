@@ -17,8 +17,17 @@ const tableQueries = [
     password VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP  NOT NULL,
-    e_rupee DECIMAL(10, 2) DEFAULT 0.00 NOT NULL
+    e_rupee DECIMAL(10, 2) DEFAULT 0.00 NOT NULL,
+    role_id INT, 
+    FOREIGN KEY (role_id) REFERENCES roles(id)
   );
+  `,
+  `
+  CREATE TABLE IF NOT EXISTS roles(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL
+  )
   `,
   // Add more table creation queries here
   // Example:

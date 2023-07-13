@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import api from '../Api'
 import "./User_Registration.css"; // Import the CSS file
 export const User_Registration = () => {
 
@@ -23,7 +24,7 @@ export const User_Registration = () => {
     event.preventDefault();
     if (validateForm()) {
         try{
-            const response = await axios.post("http://localhost:5000/api/users", userData);
+            const response = await api.post("/users", userData);
             console.log(response.data);
             setUserData({
                 name: '',
@@ -61,7 +62,7 @@ export const User_Registration = () => {
     
   return (
     <div className="container">
-        <div>User Registration</div>
+        <h1>User Registration</h1>
         <form className='form' onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="name">User Name:</label>
@@ -70,6 +71,7 @@ export const User_Registration = () => {
                     id="name"
                     name="name"
                     value={userData.name}
+                    placeholder='username'
                     onChange={handleInputChange}
                 />
                 {errors.name && <span className="error">{errors.name}</span>}
@@ -82,6 +84,7 @@ export const User_Registration = () => {
                     id="email"
                     name="email"
                     value={userData.email}
+                    placeholder='email'
                     onChange={handleInputChange}
                 />
                 {errors.email && <span className="error">{errors.email}</span>}
@@ -93,6 +96,7 @@ export const User_Registration = () => {
                     id="password"
                     name="password"
                     value={userData.password}
+                    placeholder='password'
                     onChange={handleInputChange}
                 />
                 {errors.password && <span className="error">{errors.password}</span>}
@@ -104,11 +108,12 @@ export const User_Registration = () => {
                     id="confirmPassword"
                     name="confirmPassword"
                     value={userData.confirmPassword}
+                    placeholder='confirm password'
                     onChange={handleInputChange}
                 />
                 {errors.confirmPassword && <span >{errors.confirmPassword}</span>}
             </div>
-            <button type='submit'>Submit</button>
+            <button className="submit-button" type='submit'>Submit</button>
         </form>
     </div>
     

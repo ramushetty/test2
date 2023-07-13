@@ -1,0 +1,7 @@
+.logout-button {
+ 
+  display: flex;
+  /* justify-content: flex-end; */
+  background-color: #007bff;
+  color: white;
+}

@@ -1,5 +1,8 @@
 import React , {useEffect, useState} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import api from './Api'
+
 
 
 
@@ -9,7 +12,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/data');
+        const response = await api.get('/data', {withCredentials: true});
         console.log(response.data)
         setData(response.data);
       } catch (error) {
@@ -21,7 +24,13 @@ function App() {
   }, []);
   
   return (
-    <div>{data.message}</div>
+    <div>
+
+    
+      <div>{data.message}</div>
+      
+    </div>
+
   );
 }
 

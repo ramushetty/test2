@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { User_Registration }  from './components/User_Registration';
-
+import { LoginForm } from './components/loginForm/LoginForm';
+import { BrowserRouter } from 'react-router-dom';
+import AppRouter from './router';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
-    <User_Registration />
+      <AppRouter/>
   </React.StrictMode>
 );
 
